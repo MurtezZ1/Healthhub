@@ -1,0 +1,108 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f6f7;
+    color: #333;
+}
+
+.d-flex {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-dashboard {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    border-radius: 8px;
+}
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+    color: #000; /* Changed to black */
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* Error and Loading Styles */
+.error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Table Styles */
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: ghostwhite; /* Green background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    .payment-table thead {
+        background-color: #357a38; /* Darker green for table header */
+        color: white;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+
+    .payment-table th, .payment-table td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #000; /* Fonts are black */
+    }
+
+    .payment-table tbody tr:nth-child(even) {
+        background-color: ghostwhite; /* Light green for alternating rows */
+    }
+
+    .payment-table tbody tr:hover {
+        background-color: lightgrey; /* Hover color for rows */
+        cursor: pointer;
+    }
+
+    .payment-table tbody tr td {
+        font-size: 14px;
+        color: #000; /* Text color set to black */
+    }
+
+        .payment-table tbody tr td:first-child {
+            font-weight: 500;
+        }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-dashboard {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .payment-table th, .payment-table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
