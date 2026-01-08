@@ -1,0 +1,95 @@
+.doctor-card {
+    background-color: #fff; /* White background for cards */
+    border-radius: 10px; /* Rounded corners for a softer look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Softer shadow for a clean look */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem; /* Space between cards */
+    max-height: 400px; /* Limit the height of the card */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+}
+
+    .doctor-card img {
+        width: 100%;
+        height: auto; /* Ensure images fill the card width without distortion */
+        object-fit: cover; /* Maintain aspect ratio */
+        max-height: 200px; /* Limit image height */
+    }
+
+    .doctor-card .card-body {
+        padding: 1.5rem;
+        flex-grow: 1; /* Make the body take up the available space */
+        display: flex;
+        flex-direction: column; /* Stack the body content */
+        justify-content: space-between; /* Space out the content in the card */
+    }
+
+        .doctor-card .card-body h3 {
+            font-size: 1.4rem; /* Heading size inside the card */
+            font-weight: 600;
+            color: #333; /* Dark color for readability */
+            margin-bottom: 0.5rem; /* Space below the name */
+        }
+
+        .doctor-card .card-body p {
+            color: #777; /* Lighter color for additional info */
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Allow paragraph to take remaining space */
+        }
+
+    .doctor-card:hover {
+        transform: translateY(-5px); /* Slight lift on hover */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Deepened shadow for hover effect */
+    }
+
+.green-top-section {
+    background-color: #5ab650;
+    color: white; /* White text color for contrast */
+    padding: 1.5rem 0; /* Reduced padding to move the section up */
+    text-align: center; /* Centers the text */
+}
+
+    .green-top-section h1,
+    .green-top-section p {
+        margin: 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Optional text shadow for better visibility */
+    }
+
+.header-section {
+    background-image: url('https://media.istockphoto.com/id/513438487/photo/doctors-and-nurses-smiling-in-hospital-hallway.jpg?s=612x612&w=0&k=20&c=Gqv61wGBPSBWciA2x6MdcEcHtGe3VxZG7-62bopf63E='); /* Background image */
+    background-size: cover; /* Ensures the image covers the section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-attachment: fixed; /* Parallax effect */
+    padding: 10rem 0; /* Adds padding to the top section */
+    position: relative;
+    z-index: 1;
+    color: white; /* Ensures text is visible */
+    text-align: center; /* Centers the text */
+
+}
+
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for contrast */
+    z-index: 0;
+}
+
+.header-section h1,
+.header-section p {
+    z-index: 1;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+}
+
+.our-doctors-section {
+    padding: 5rem 0; /* Padding for the next section */
+    background-color: #f9f9f9; /* Light background color */
+}
