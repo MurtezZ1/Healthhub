@@ -1,0 +1,53 @@
+.kontekst {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the video */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    background-color: #4a90e2; /* Blue background for sides */
+}
+.vid {
+    position: relative; /* Keep video in its place */
+    z-index: 1; /* Above background */
+    width: 90%; /* Increased width of the video */
+    max-width: 1000px; /* Limit max width for larger screens */
+}
+
+.bg {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the entire area */
+    filter: brightness(60%); /* Slightly darken the video background */
+}
+
+.overlay {
+    position: absolute; /* Positioned above the video */
+    z-index: 2; /* Above the video */
+    backdrop-filter: blur(8px); /* Subtle blur for depth */
+    border-radius: 12px; /* Rounded corners */
+    padding: 40px; /* Padding inside the overlay */
+    color: #ffffff; /* Text color */
+    width: 100%; /* Ensure overlay takes full width of video */
+}
+
+.title {
+    font-size: 36px; /* Larger font size for the title */
+    margin-bottom: 20px; /* Space below title */
+}
+
+.subtitle {
+    font-size: 24px; /* Subtitle size */
+    margin-top: 30px; /* Space above subtitles */
+}
+
+.description {
+    font-size: 18px; /* Standard font size for paragraphs */
+    line-height: 1.6; /* Increased line height for readability */
+    margin-bottom: 20px; /* Space below paragraphs */
+}
+
+.list {
+    margin: 20px 0; /* Space above and below the list */
+    padding-left: 20px; /* Indent for list items */
+    font-size: 18px; /* Standard font size for list items */
+    line-height: 1.5; /* Line height for list items */
+}
