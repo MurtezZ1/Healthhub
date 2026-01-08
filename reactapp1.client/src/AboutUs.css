@@ -1,0 +1,220 @@
+/* About Us Styles */
+/*.aboutus-container {
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+}*/
+
+/* Hero Section */
+/*.aboutus-hero {
+    position: relative;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/background.jpg') no-repeat center center/cover;
+    padding: 80px 20px;
+}
+
+    .aboutus-hero .hero-text {
+        z-index: 2;
+        position: relative;
+    }
+
+    .aboutus-hero h1 {
+        font-size: 3rem;
+        color: #0894d1;
+        margin-bottom: 10px;
+    }
+
+    .aboutus-hero p {
+        font-size: 1.2rem;
+        color: #ccc;
+    }
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    margin-top: 20px;
+    border-radius: 10px;
+}*/
+
+/* Content Section */
+/*.aboutus-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #111;*/ /* Matches Ballina */
+/*}
+
+.content-block {
+    max-width: 800px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+    .content-block h2 {
+        font-size: 2rem;
+        color: #0894d1;
+        margin-bottom: 15px;
+    }
+
+    .content-block p {
+        font-size: 1.1rem;
+        color: #ccc;
+    }
+
+    .content-block ul {
+        list-style: none;
+        padding-left: 0;
+        color: #ccc;
+        text-align: left;
+    }
+
+        .content-block ul li {
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 25px;
+        }
+
+            .content-block ul li::before {
+                content: '✔';
+                position: absolute;
+                left: 0;
+                color: #0894d1;
+                font-size: 1.2rem;
+            }
+
+.content-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 20px 0;
+}*/
+
+/* CTA Section */
+/*.aboutus-cta {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #0894d1;
+    color: #fff;
+}
+
+    .aboutus-cta h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .aboutus-cta p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+.cta-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #0894d1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+    .cta-button:hover {
+        background-color: #eee;
+    }
+
+@media (max-width: 768px) {
+    .aboutus-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .aboutus-content h2 {
+        font-size: 1.5rem;
+    }
+}*/
+
+
+.about-us {
+    font-family: Arial, sans-serif;
+    background-color: mintcream;
+    color: #568203;
+}
+
+.about-header {
+    background-color: #5ab650;
+    color: white;
+    text-align: center;
+    padding: 2px;
+}
+
+    .about-header h1 {
+        margin: 0;
+        font-size: 3em;
+    }
+
+    .about-header p {
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+
+.mission-vision {
+    padding: 40px 0;
+}
+
+    .mission-vision h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .mission-vision p {
+        font-size: 1.1em;
+        line-height: 1.5;
+    }
+
+.values {
+    background-color: mintcream;
+    padding: 20px 0;
+}
+
+    .values h2 {
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .values .col-md-4 {
+        margin-bottom: 20px;
+    }
+
+.our-team {
+    padding: 40px 0;
+    background-color: mintcream;
+}
+
+    .our-team .team-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+.facilities {
+    padding: 40px 0;
+}
+
+    .facilities img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+    .footer p {
+        margin: 0;
+        font-size: 1.1em;
+    }
