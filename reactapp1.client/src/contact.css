@@ -1,0 +1,137 @@
+.contact-us {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.contact-header {
+    text-align: center;
+    background-color: #5ab650;
+    color: white;
+    padding: 5px 5px;
+}
+
+    .contact-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .contact-header p {
+        font-size: 1.2rem;
+    }
+
+.contact-info {
+    padding: 5px 5px;
+    background-color: #fff;
+}
+
+    .contact-info h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .contact-info ul {
+        list-style: none;
+        padding: 0;
+        font-size: 1.1rem;
+    }
+
+        .contact-info ul li {
+            margin-bottom: 10px;
+        }
+
+.map-placeholder img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.contact-form {
+    padding: 40px 20px;
+    background-color: #e9ecef;
+}
+
+    .contact-form h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .contact-form form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-group textarea {
+        resize: none;
+    }
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #5ab650;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+    .submit-button:hover {
+        background-color: #4a9e40;
+    }
+
+.contact-footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px 10px;
+    margin-top: 40px;
+}
+.admin-messages {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+    .admin-messages h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .admin-messages ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .admin-messages li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+        .admin-messages li p {
+            margin: 5px 0;
+        }
