@@ -1,0 +1,20 @@
+/*.welcome-message {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    white-space: nowrap;*/ /* Prevent text from wrapping */
+    /*overflow: hidden;*/ /* Hide overflow content */
+    /*animation: slide 10s linear infinite;*/ /* Slide the text horizontally */
+/*}
+
+@keyframes slide {
+    0% {
+        transform: translateX(100%);*/ /* Start off-screen to the right */
+    /*}
+
+    100% {
+        transform: translateX(-100%);*/ /* Move off-screen to the left */
+    /*}
+}*/
