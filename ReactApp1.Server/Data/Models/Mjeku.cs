@@ -1,19 +1,39 @@
-﻿namespace ReactApp1.Server.Data.Models
+﻿// namespace ReactApp1.Server.Data.Models
+// {
+//     public class Mjeku
+//     {
+//         public string Id { get; set; }
+
+//         public string Specializimi { get; set; }
+//         public string NumriLicences { get; set; }
+
+//         // Foreign key from User
+//         public string? UserId { get; set; }
+//         public User User { get; set; } 
+
+
+//         public List<Termini> Terminet { get; set; }
+//         public List<Historiku> Historiqet { get; set; }
+//     }
+
+// }
+using System;
+using System.Collections.Generic;
+
+namespace ReactApp1.Server.Data.Models
 {
     public class Mjeku
     {
-        public string Id { get; set; }
-
-        public string Specializimi { get; set; }
-        public string NumriLicences { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Specializimi { get; set; } = string.Empty;
+        public string NumriLicences { get; set; } = string.Empty;
 
         // Foreign key from User
         public string? UserId { get; set; }
-        public User User { get; set; } 
+        public User? User { get; set; }
 
-
-        public List<Termini> Terminet { get; set; }
-        public List<Historiku> Historiqet { get; set; }
+        // One-to-many relationships
+        public List<Termini> Terminet { get; set; } = new List<Termini>();
+        public List<Historiku> Historiks { get; set; } = new List<Historiku>();
     }
-
 }

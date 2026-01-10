@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ReactApp1.Server.DTOs;
-using ReactApp1.Server.Migrations;
+// using ReactApp1.Server.Migrations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ReactApp1.Server.Controllers
