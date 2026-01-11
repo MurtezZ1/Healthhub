@@ -1,220 +1,337 @@
-/* About Us Styles */
-/*.aboutus-container {
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.8;
-}*/
+/* SECTIONS */
+section {
+    padding: 70px 20px;
+}
 
-/* Hero Section */
-/*.aboutus-hero {
-    position: relative;
+
+.container {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* MISSION & VISION */
+/* .mission-vision .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+} */
+
+.info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-6px);
+}
+
+.info-card h2 {
+    color: #198754;
+}
+
+/* VALUES */
+.values {
+    background-color: #f4fbf7;
+}
+
+.section-title {
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/background.jpg') no-repeat center center/cover;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #198754;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.value-card {
+    background: white;
+    padding: 35px;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.value-card svg {
+    font-size: 3rem;
+    color: #198754;
+    margin-bottom: 15px;
+}
+
+/* TEAM */
+.our-team {
+    text-align: center;
+}
+
+.our-team img {
+    max-width: 100%;
+    border-radius: 18px;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.our-team p {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* FACILITIES */
+.facilities {
+    background-color: #f9f9f9;
+}
+
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    align-items: center;
+}
+
+.facilities img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #198754;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+*/ .about-us {
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* HEADER – FULL WIDTH */
+.about-header {
+    width: 100vw;
+    min-height: 60vh;
+    background: linear-gradient(135deg, #198754, #2ecc71);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 80px 20px;
 }
 
-    .aboutus-hero .hero-text {
-        z-index: 2;
-        position: relative;
-    }
-
-    .aboutus-hero h1 {
-        font-size: 3rem;
-        color: #0894d1;
-        margin-bottom: 10px;
-    }
-
-    .aboutus-hero p {
-        font-size: 1.2rem;
-        color: #ccc;
-    }
-
-.hero-image {
-    width: 100%;
-    height: auto;
-    max-height: 400px;
-    margin-top: 20px;
-    border-radius: 10px;
-}*/
-
-/* Content Section */
-/*.aboutus-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    background-color: #111;*/ /* Matches Ballina */
-/*}
-
-.content-block {
-    max-width: 800px;
-    margin-bottom: 30px;
-    text-align: center;
+.about-header h1 {
+    font-size: 3.2rem;
+    font-weight: bold;
 }
 
-    .content-block h2 {
-        font-size: 2rem;
-        color: #0894d1;
-        margin-bottom: 15px;
-    }
-
-    .content-block p {
-        font-size: 1.1rem;
-        color: #ccc;
-    }
-
-    .content-block ul {
-        list-style: none;
-        padding-left: 0;
-        color: #ccc;
-        text-align: left;
-    }
-
-        .content-block ul li {
-            position: relative;
-            margin-bottom: 10px;
-            padding-left: 25px;
-        }
-
-            .content-block ul li::before {
-                content: '✔';
-                position: absolute;
-                left: 0;
-                color: #0894d1;
-                font-size: 1.2rem;
-            }
-
-.content-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin: 20px 0;
-}*/
-
-/* CTA Section */
-/*.aboutus-cta {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #0894d1;
-    color: #fff;
+.about-header p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin-top: 15px;
 }
 
-    .aboutus-cta h2 {
-        font-size: 2rem;
-        margin-bottom: 10px;
-    }
-
-    .aboutus-cta p {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-    }
-
-.cta-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #fff;
-    color: #0894d1;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+/* SECTIONS – FULL WIDTH */
+section {
+    width: 100vw;
+    padding: 80px 5vw;
 }
 
-    .cta-button:hover {
-        background-color: #eee;
-    }
-
-@media (max-width: 768px) {
-    .aboutus-hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .aboutus-content h2 {
-        font-size: 1.5rem;
-    }
-}*/
-
-
-.about-us {
-    font-family: Arial, sans-serif;
-    background-color: mintcream;
-    color: #568203;
+/* CUSTOM CONTAINER (instead of bootstrap container) */
+.about-container {
+    max-width: 1200px;
+    margin: auto;
 }
 
-.about-header {
-    background-color: #5ab650;
-    color: white;
-    text-align: center;
-    padding: 2px;
+/* MISSION & VISION */
+.mission-vision .about-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
 }
 
-    .about-header h1 {
-        margin: 0;
-        font-size: 3em;
-    }
-
-    .about-header p {
-        font-size: 1.2em;
-        margin-top: 10px;
-    }
-
-.mission-vision {
-    padding: 40px 0;
+.info-card {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
 }
 
-    .mission-vision h2 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-    }
+.info-card:hover {
+    transform: translateY(-8px);
+}
 
-    .mission-vision p {
-        font-size: 1.1em;
-        line-height: 1.5;
-    }
+.info-card h2 {
+    color: #198754;
+    margin-bottom: 15px;
+}
 
+/* VALUES */
 .values {
-    background-color: mintcream;
-    padding: 20px 0;
+    background-color: #f4fbf7;
 }
 
-    .values h2 {
-        font-size: 2.5em;
-        text-align: center;
-        margin-bottom: 40px;
-    }
+.section-title {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 60px;
+    color: #198754;
+}
 
-    .values .col-md-4 {
-        margin-bottom: 20px;
-    }
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
 
+.value-card {
+    background: white;
+    padding: 45px 30px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.value-card svg {
+    font-size: 3.2rem;
+    color: #198754;
+    margin-bottom: 20px;
+}
+
+/* TEAM */
 .our-team {
-    padding: 40px 0;
-    background-color: mintcream;
+    text-align: center;
 }
 
-    .our-team .team-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
+.our-team img {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 22px;
+    margin: 40px auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
 
+.our-team p {
+    max-width: 900px;
+    margin: auto;
+    font-size: 1.05rem;
+}
+
+/* FACILITIES */
 .facilities {
-    padding: 40px 0;
+    background-color: #f9f9f9;
 }
 
-    .facilities img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px;
+    align-items: center;
+}
 
+.facilities img {
+    width: 100%;
+    border-radius: 22px;
+}
+
+/* FOOTER */
 .footer {
-    background-color: #333;
+    width: 100vw;
+    background-color: #198754;
     color: white;
-    padding: 20px 0;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.95rem;
 }
 
-    .footer p {
-        margin: 0;
-        font-size: 1.1em;
-    }
+*/ .about-us {
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+.about-header {
+    width: 100%;
+    background: linear-gradient(135deg, #198754, #2ecc71);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.about-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.about-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* SECTIONS */
+.about-us section {
+    width: 100%;
+    padding: 70px 20px;
+}
+
+/* MISSION & VISION */
+.info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-6px);
+}
+
+.info-card h2 {
+    color: #198754;
+}
+
+/* VALUES */
+.values {
+    background-color: #f4fbf7;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #198754;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* TEAM */
+.our-team img,
+.facilities img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* FOOTER */
+.footer {
+    width: 100%;
+    background-color: #198754;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}

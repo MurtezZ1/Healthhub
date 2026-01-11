@@ -1,20 +1,32 @@
-/*.welcome-message {
-    background-color: white;
-    color: black;
-    padding: 10px;
-    text-align: center;
-    font-size: 1.2rem;
-    white-space: nowrap;*/ /* Prevent text from wrapping */
-    /*overflow: hidden;*/ /* Hide overflow content */
-    /*animation: slide 10s linear infinite;*/ /* Slide the text horizontally */
-/*}
+.green-navbar {
+    background: linear-gradient(90deg, #198754, #28a745);
+}
 
-@keyframes slide {
-    0% {
-        transform: translateX(100%);*/ /* Start off-screen to the right */
-    /*}
+.brand-text {
+    font-weight: bold;
+    color: #ffffff !important;
+    font-size: 1.4rem;
+}
 
-    100% {
-        transform: translateX(-100%);*/ /* Move off-screen to the left */
-    /*}
-}*/
+.nav-item {
+    color: #e9f7ef !important;
+    margin-right: 12px;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+.appointment-btn {
+    background-color: #ffffff;
+    color: #198754;
+    border: none;
+    font-weight: 600;
+}
+
+.appointment-btn:hover {
+    background-color: #e6f4ea;
+    color: #145c32;
+}
