@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-NotificationService-07ffeed3-9a3b-49d3-9a86-71f0e9be78c7</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="2.13.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="10.0.0" />
+  </ItemGroup>
+</Project>
