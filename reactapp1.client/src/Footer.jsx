@@ -14,7 +14,7 @@ function Footer() {
 
     return (
         <footer>
-            <div className="container">
+            <div className="container-fluid">
 
                 <div className="footer-columns">
 

@@ -25,7 +25,9 @@ footer h6 {
 footer .footer-columns {
   display: flex;
   flex-wrap: wrap;
-  gap: 240px;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 5%;
 }
 
 footer .footer-column {
