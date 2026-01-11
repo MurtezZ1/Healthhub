@@ -17,7 +17,7 @@ const LoginForm = () => {
 
         try {
             // Update the URL to the correct endpoint
-            const response = await fetch('https://localhost:7107/api/User/token', {
+            const response = await fetch('http://localhost:5051/api/User/token', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData),

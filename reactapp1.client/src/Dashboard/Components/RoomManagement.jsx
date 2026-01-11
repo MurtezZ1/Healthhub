@@ -31,7 +31,7 @@ const RoomManagement = () => {
                 return;
             }
 
-            const response = await axios.get("https://localhost:7107/api/Dhoma", {
+            const response = await axios.get("http://localhost:5051/api/Dhoma", {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ const RoomManagement = () => {
 
             console.log(roomData);
 
-            await axios.post("https://localhost:7107/api/Dhoma", roomData, {
+            await axios.post("http://localhost:5051/api/Dhoma", roomData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -98,7 +98,7 @@ const RoomManagement = () => {
                 available: formData.available
             };
 
-            await axios.put(`https://localhost:7107/api/Dhoma/${editingRoom.id}`, roomData, {
+            await axios.put(`http://localhost:5051/api/Dhoma/${editingRoom.id}`, roomData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -121,7 +121,7 @@ const RoomManagement = () => {
 
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`https://localhost:7107/api/Dhoma/${roomId}`, {
+            await axios.delete(`http://localhost:5051/api/Dhoma/${roomId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'

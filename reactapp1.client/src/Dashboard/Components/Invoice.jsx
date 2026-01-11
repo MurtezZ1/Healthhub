@@ -33,7 +33,7 @@ const Invoice = () => {
     const fetchPatients = async () => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.get("https://localhost:7107/api/Pacienti", {
+            const response = await axios.get("http://localhost:5051/api/Pacienti", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setPatients(response.data);
@@ -47,7 +47,7 @@ const Invoice = () => {
     const fetchInvoice = async (patientId) => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.get(`https://localhost:7107/api/Invoice/${patientId}/Invoice`, {
+            const response = await axios.get(`http://localhost:5051/api/Invoice/${patientId}/Invoice`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             if (response.data) {

@@ -16,7 +16,7 @@ const Doctors = () => {
     });
     const [isEdit, setIsEdit] = useState(false);
 
-    const apiUrl = "https://localhost:7107/api/Mjeku";
+    const apiUrl = "http://localhost:5051/api/Mjeku";
 
     const fetchMjeket = async () => {
         try {

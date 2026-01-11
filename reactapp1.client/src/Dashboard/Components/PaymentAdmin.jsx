@@ -22,7 +22,7 @@ const PaymentAdmin = () => {
                 return;
             }
 
-            const response = await axios.get("https://localhost:7107/api/Fatura", {
+            const response = await axios.get("http://localhost:5051/api/Fatura", {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'

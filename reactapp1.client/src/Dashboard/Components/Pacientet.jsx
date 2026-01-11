@@ -62,7 +62,7 @@ const Pacientet = () => {
     const getData = async (userId) => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.get(`https://localhost:7107/api/Pacienti?userId=${userId}`, {
+            const response = await axios.get(`http://localhost:5051/api/Pacienti?userId=${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
@@ -112,7 +112,7 @@ const Pacientet = () => {
         }
 
         try {
-            const response = await axios.post("https://localhost:7107/api/Pacienti/Add-Patient", payload, {
+            const response = await axios.post("http://localhost:5051/api/Pacienti/Add-Patient", payload, {
                 headers: { 
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ const Pacientet = () => {
 
         try {
             const response = await axios.post(
-                `https://localhost:7107/api/Pacienti/Update-Pacienti?id=${Id}`,
+                `http://localhost:5051/api/Pacienti/Update-Pacienti?id=${Id}`,
                 updatedPatient,
                 {
                     headers: {
@@ -198,7 +198,7 @@ const Pacientet = () => {
             const decoded = decodeJWT(token);
 
             try {
-                const response = await axios.delete(`https://localhost:7107/api/Pacienti/${id}`, {
+                const response = await axios.delete(`http://localhost:5051/api/Pacienti/${id}`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

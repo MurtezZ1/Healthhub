@@ -22,7 +22,7 @@ const ManageUsers = () => {
     const fetchUsers = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("https://localhost:7107/api/User");
+            const response = await axios.get("http://localhost:5051/api/User");
             if (Array.isArray(response.data)) {
                 setUsers(response.data);
             } else {
@@ -38,7 +38,7 @@ const ManageUsers = () => {
 
     const fetchRoles = async () => {
         try {
-            const response = await axios.get("https://localhost:7107/api/User/roles");
+            const response = await axios.get("http://localhost:5051/api/User/roles");
             if (Array.isArray(response.data)) {
                 setAvailableRoles(response.data);
             }
@@ -71,7 +71,7 @@ const ManageUsers = () => {
 
     const saveEdit = async () => {
         try {
-            await axios.put(`https://localhost:7107/api/User/${editingUser.id}`, editingUser);
+            await axios.put(`http://localhost:5051/api/User/${editingUser.id}`, editingUser);
             setShowEditModal(false);
             setEditingUser(null);
             fetchUsers(); // Refresh the list
@@ -83,7 +83,7 @@ const ManageUsers = () => {
 
     const confirmDelete = async () => {
         try {
-            await axios.delete(`https://localhost:7107/api/User/${selectedUser.id}`);
+            await axios.delete(`http://localhost:5051/api/User/${selectedUser.id}`);
             setShowDeleteModal(false);
             setSelectedUser(null);
             fetchUsers(); // Refresh the list
@@ -99,7 +99,7 @@ const ManageUsers = () => {
                 email: selectedUser.email,
                 role: selectedUser.newRole
             };
-            await axios.post("https://localhost:7107/api/User/changerole", roleData);
+            await axios.post("http://localhost:5051/api/User/changerole", roleData);
             setShowRoleModal(false);
             setSelectedUser(null);
             fetchUsers(); // Refresh the list

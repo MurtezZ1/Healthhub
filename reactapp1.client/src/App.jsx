@@ -4,44 +4,45 @@ import Footer from "./Footer";
 import Ballina from './Ballina';
 import { Route, Routes, HashRouter, Navigate } from 'react-router-dom';
 import Header from './Header';
-import Dashboard from './Dashboard/Components/Dashboard';
-import Pacientet from './Dashboard/Components/Pacientet';
-import Appointments from './Dashboard/Components/Appointments';
-import AppointmentSchedule from './Dashboard/Components/AppointmentSchedule';
-import DashboardAdmin from './Dashboard/Components/DashboardAdmin';
-import ManageUsers from './Dashboard/Components/ManageUsers';
-import OurDoctors from './OurDoctors';
-import PaymentAdmin from './Dashboard/Components/PaymentAdmin';
-import Doctors from './Dashboard/Components/Doctors';
-import Settings from './Dashboard/Components/Settings';
-import Room from './Dashboard/Components/Room';
-import RoomManagement from './Dashboard/Components/RoomManagement';
-import Payments from './Dashboard/Components/Payments';
-import Records from './Dashboard/Components/Records';
-import Services from './Dashboard/Components/Services';
-import Invoice from './Dashboard/Components/Invoice';
-import LiveChat from './LiveChat';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
-
+console.log("App module loading...");
 
 // Lazy loading components
 const RegisterForm = React.lazy(() => import("./RegisterForm"));
 const LoginForm = React.lazy(() => import("./LoginForm"));
 const AboutUs = React.lazy(() => import("./AboutUs"));
 const Contact = React.lazy(() => import("./Contact"));
+const OurDoctors = React.lazy(() => import('./OurDoctors'));
+
+// Dashboard Components Lazy Loading
+const Dashboard = React.lazy(() => import('./Dashboard/Components/Dashboard'));
+const Pacientet = React.lazy(() => import('./Dashboard/Components/Pacientet'));
+const Appointments = React.lazy(() => import('./Dashboard/Components/Appointments'));
+const AppointmentSchedule = React.lazy(() => import('./Dashboard/Components/AppointmentSchedule'));
+const DashboardAdmin = React.lazy(() => import('./Dashboard/Components/DashboardAdmin'));
+const ManageUsers = React.lazy(() => import('./Dashboard/Components/ManageUsers'));
+const PaymentAdmin = React.lazy(() => import('./Dashboard/Components/PaymentAdmin'));
+const Doctors = React.lazy(() => import('./Dashboard/Components/Doctors'));
+const Settings = React.lazy(() => import('./Dashboard/Components/Settings'));
+const Room = React.lazy(() => import('./Dashboard/Components/Room'));
+const RoomManagement = React.lazy(() => import('./Dashboard/Components/RoomManagement'));
+const Payments = React.lazy(() => import('./Dashboard/Components/Payments'));
+const Records = React.lazy(() => import('./Dashboard/Components/Records'));
+const Services = React.lazy(() => import('./Dashboard/Components/Services'));
+const Invoice = React.lazy(() => import('./Dashboard/Components/Invoice'));
+
+import LiveChat from './LiveChat';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Error Boundary Component
 class ErrorBoundary extends Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = { hasError: false, error: null };
     }
 
     static getDerivedStateFromError(error) {
-        return { hasError: true };
+        return { hasError: true, error };
     }
 
     componentDidCatch(error, errorInfo) {
@@ -50,7 +51,12 @@ class ErrorBoundary extends Component {
 
     render() {
         if (this.state.hasError) {
-            return <h1>Something went wrong.</h1>;
+            return (
+                <div className="p-4 text-center">
+                    <h1>Something went wrong.</h1>
+                    <p className="text-danger">{this.state.error && this.state.error.toString()}</p>
+                </div>
+            );
         }
         return this.props.children;
     }
@@ -141,7 +147,7 @@ class App extends Component {
                                 <ErrorBoundary><ManageUsers /></ErrorBoundary>
                             </ProtectedRoute>
                         } />
-                       
+
                         <Route path="/PaymentAdmin" element={
                             <ProtectedRoute roles={['Administrator']}>
                                 <ErrorBoundary><PaymentAdmin /></ErrorBoundary>
@@ -173,4 +179,3 @@ class App extends Component {
 }
 
 export default App;
-

@@ -26,7 +26,7 @@ function Settings() {
         console.log("FormData being sent:", formData); // Debug payload
 
         try {
-            const response = await axios.post("https://localhost:7107/api/User/addrole", formData);
+            const response = await axios.post("http://localhost:5051/api/User/addrole", formData);
             console.log("API response:", response.data); // Debug response
             setNotification({
                 message: "Role successfully updated!",

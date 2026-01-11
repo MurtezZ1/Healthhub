@@ -90,7 +90,7 @@ const Payments = () => {
             const token = localStorage.getItem("token");
             if (!token) return;
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const response = await axios.get("https://localhost:7107/api/Sherbimi", config);
+            const response = await axios.get("http://localhost:5051/api/Sherbimi", config);
             setServices(response.data);
         } catch (error) {
             toast.error("Error fetching services: " + error.message);
@@ -103,7 +103,7 @@ const Payments = () => {
             const token = localStorage.getItem("token");
             if (!token) return;
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const response = await axios.get("https://localhost:7107/api/Fatura", config);
+            const response = await axios.get("http://localhost:5051/api/Fatura", config);
             const normalized = response.data.map(p => {
                 const patient = patientsList.find(pt => pt.id === (p.pacientId ?? p.patientId));
                 return {
@@ -151,7 +151,7 @@ const Payments = () => {
                 Data: paymentForm.date,
                 // Paguar: paymentForm.status === "Paid"
             };
-            const response = await axios.post("https://localhost:7107/api/Fatura", paymentPayload, config);
+            const response = await axios.post("http://localhost:5051/api/Fatura", paymentPayload, config);
             const newPayment = {
                 ...response.data,
                 amount: response.data.shuma ?? response.data.amount,
@@ -202,7 +202,7 @@ const Payments = () => {
                 Data: paymentForm.date,
                 Paguar: paymentForm.status === "Paid"
             };
-            await axios.put(`https://localhost:7107/api/Fatura/${paymentForm.id}`, paymentPayload, config);
+            await axios.put(`http://localhost:5051/api/Fatura/${paymentForm.id}`, paymentPayload, config);
 
             await fetchPayments(patients);
 
@@ -220,7 +220,7 @@ const Payments = () => {
             try {
                 const token = localStorage.getItem("token");
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                await axios.delete(`https://localhost:7107/api/Fatura/${id}`, config);
+                await axios.delete(`http://localhost:5051/api/Fatura/${id}`, config);
 
                 // Optionally, re-fetch payments from backend to ensure sync
                 await fetchPayments(patients);
@@ -300,7 +300,7 @@ const Payments = () => {
                 return;
             }
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const response = await axios.get("https://localhost:7107/api/Pacienti", config);
+            const response = await axios.get("http://localhost:5051/api/Pacienti", config);
             setPatients(response.data);
             await fetchPayments(response.data);
             setLoading(false);

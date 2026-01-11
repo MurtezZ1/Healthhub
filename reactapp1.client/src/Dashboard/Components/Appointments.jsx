@@ -63,7 +63,7 @@ const Appointments = () => {
 
             // Fetch appointments
             const appointmentsResponse = await axios.get(
-                `https://localhost:7107/api/Termini/byDoctor/${doctorId}`,
+                `http://localhost:5051/api/Termini/byDoctor/${doctorId}`,
                 { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
             );
 
@@ -72,7 +72,7 @@ const Appointments = () => {
 
             // Fetch patient details in a single batch
             const patientsResponse = await axios.get(
-                `https://localhost:7107/api/Pacienti/GetPatientsBatch`,
+                `http://localhost:5051/api/Pacienti/GetPatientsBatch`,
                 {
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
                     params: { ids: patientIds.join(',') }
@@ -161,7 +161,7 @@ const formattedAppointments = appointmentsResponse.data.map(appointment => {
         try {
             setLoading(true);
             await axios.delete(
-                `https://localhost:7107/api/Termini/${selectedAppointment.id}`,
+                `http://localhost:5051/api/Termini/${selectedAppointment.id}`,
                 { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
             );
             setRefresh(prev => !prev);
@@ -181,7 +181,7 @@ const updateAppointment = async () => {
     try {
         setLoading(true);
         await axios.put(
-            `https://localhost:7107/api/Termini/${selectedAppointment.id}`,
+            `http://localhost:5051/api/Termini/${selectedAppointment.id}`,
             {
                 Id: selectedAppointment.id,
                 DoktorId: getDoctorIdFromToken(),

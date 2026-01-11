@@ -79,7 +79,7 @@ const AppointmentSchedule = () => {
 
     const fetchDoctors = async (token) => {
         try {
-            const response = await axios.get("https://localhost:7107/api/Mjeku", {
+            const response = await axios.get("http://localhost:5051/api/Mjeku", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -145,7 +145,7 @@ const AppointmentSchedule = () => {
             const generatedId = generateGuid();
 
             // Only verify doctor exists (removed patient verification)
-            const doctorResponse = await axios.get(`https://localhost:7107/api/Mjeku/${selectedDoctorId}`, {
+            const doctorResponse = await axios.get(`http://localhost:5051/api/Mjeku/${selectedDoctorId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -156,7 +156,7 @@ const AppointmentSchedule = () => {
             console.log("Token being sent:", token);
 
             const patientResponse = await axios.get(
-                `https://localhost:7107/api/Pacienti/byUserId/${newAppointment.pacientId}`,
+                `http://localhost:5051/api/Pacienti/byUserId/${newAppointment.pacientId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -175,7 +175,7 @@ const AppointmentSchedule = () => {
 
             console.log("Appointment Data:", appointmentData);
 
-            await axios.post("https://localhost:7107/api/Termini", appointmentData, {
+            await axios.post("http://localhost:5051/api/Termini", appointmentData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'

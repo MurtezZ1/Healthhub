@@ -39,7 +39,7 @@ const Records = () => {
 
     const fetchRecords = async () => {
         try {
-            const response = await axios.get("https://localhost:7107/api/Sherbimi");
+            const response = await axios.get("http://localhost:5051/api/Sherbimi");
             setRecords(response.data);
         } catch (error) {
             const errorMsg = `Error fetching services: ${error.message}`;
@@ -58,7 +58,7 @@ const Records = () => {
 
     const handleDelete = async (serviceId) => {
         try {
-            await axios.delete(`https://localhost:7107/api/Sherbimi/${serviceId}`);
+            await axios.delete(`http://localhost:5051/api/Sherbimi/${serviceId}`);
             setRecords(Records.filter((service) => service.id !== serviceId));
             toast.success("Service deleted successfully!");
         } catch (error) {
@@ -77,7 +77,7 @@ const Records = () => {
                 cmimi: newPrice,
             };
             await axios.put(
-                `https://localhost:7107/api/Sherbimi/${editingService.id}`,
+                `http://localhost:5051/api/Sherbimi/${editingService.id}`,
                 updatedService
             );
             setRecords(Records.map((service) =>
@@ -101,7 +101,7 @@ const Records = () => {
         };
 
         try {
-            const response = await axios.post("https://localhost:7107/api/Sherbimi", newService); // Adjust the endpoint
+            const response = await axios.post("http://localhost:5051/api/Sherbimi", newService); // Adjust the endpoint
             setRecords([...Records, response.data]);
             setOpenAddDialog(false);
             toast.success("Service added successfully!");

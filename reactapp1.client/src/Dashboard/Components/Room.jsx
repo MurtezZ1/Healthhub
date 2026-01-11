@@ -68,7 +68,7 @@ const Room = () => {
             navigate("/login");
         } else {
             try {
-                const patientsResponse = await fetch("https://localhost:7107/api/Pacienti", {
+                const patientsResponse = await fetch("http://localhost:5051/api/Pacienti", {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`,
@@ -97,7 +97,7 @@ const Room = () => {
     const fetchAssignments = async () => {
         const token = localStorage.getItem("token");
         try {
-            const response = await fetch("https://localhost:7107/api/DhomaPacientit", {
+            const response = await fetch("http://localhost:5051/api/DhomaPacientit", {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (response.ok) {
@@ -119,7 +119,7 @@ const Room = () => {
     const fetchRooms = async () => {
         const token = localStorage.getItem("token");
         try {
-            const response = await fetch("https://localhost:7107/api/Dhoma", {
+            const response = await fetch("http://localhost:5051/api/Dhoma", {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (response.ok) {
@@ -206,7 +206,7 @@ const Room = () => {
         }
 
         try {
-            await axios.post("https://localhost:7107/api/DhomaPacientit", newAssignment, {
+            await axios.post("http://localhost:5051/api/DhomaPacientit", newAssignment, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "application/json",
@@ -243,10 +243,10 @@ const Room = () => {
         const token = localStorage.getItem("token");
 
         try {
-            console.log("PUT URL:", `https://localhost:7107/api/DhomaPacientit/${assignmentId}`);
+            console.log("PUT URL:", `http://localhost:5051/api/DhomaPacientit/${assignmentId}`);
             console.log("PUT BODY:", updatedAssignment);
             await axios.put(
-                `https://localhost:7107/api/DhomaPacientit/${assignmentId}`,
+                `http://localhost:5051/api/DhomaPacientit/${assignmentId}`,
                 updatedAssignment,
                 {
                     headers: {
@@ -296,7 +296,7 @@ const Room = () => {
                 return;
             }
             try {
-                await axios.delete(`https://localhost:7107/api/DhomaPacientit/${assignmentId}`, {
+                await axios.delete(`http://localhost:5051/api/DhomaPacientit/${assignmentId}`, {
                     headers: {
                         "Authorization": `Bearer ${token}`,
                     },

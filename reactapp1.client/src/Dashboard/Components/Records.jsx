@@ -60,7 +60,7 @@ const Records = () => {
                 return;
             }
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            const response = await axios.get("https://localhost:7107/api/Pacienti", config);
+            const response = await axios.get("http://localhost:5051/api/Pacienti", config);
             if (Array.isArray(response.data)) {
                 setPatients(response.data);
             } else {
@@ -166,7 +166,7 @@ const Records = () => {
             };
 
             await axios.post(
-                "https://localhost:7107/api/Historiku",
+                "http://localhost:5051/api/Historiku",
                 newData,
                 {
                     headers: {
@@ -204,7 +204,7 @@ const Records = () => {
         const token = localStorage.getItem("token");
         if (!token) return;
         try {
-            const response = await axios.get("https://localhost:7107/api/Historiku", {
+            const response = await axios.get("http://localhost:5051/api/Historiku", {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             setRecords(response.data);
@@ -293,7 +293,7 @@ const Records = () => {
                 perfundimi: newEntry.Perfundimi || "",
             };
             await axios.put(
-                `https://localhost:7107/api/Historiku/${newEntry.Id}`,
+                `http://localhost:5051/api/Historiku/${newEntry.Id}`,
                 updatedData,
                 {
                     headers: {
@@ -328,7 +328,7 @@ const Records = () => {
         if (!window.confirm("Are you sure you want to delete this record?")) return;
         const token = localStorage.getItem("token");
         try {
-            await axios.delete(`https://localhost:7107/api/Historiku/${id}`, {
+            await axios.delete(`http://localhost:5051/api/Historiku/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             toast.success("Record deleted!");
