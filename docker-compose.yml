@@ -241,6 +241,13 @@ services:
       - "4317:4317"   # OTLP gRPC receiver
       - "4318:4318"   # OTLP HTTP receiver
 
+  sonarqube:
+    image: sonarqube:9.9.2-community
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+
 volumes:
   mysql-data:
   mongodb-data:

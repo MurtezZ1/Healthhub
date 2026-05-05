@@ -26,11 +26,11 @@ namespace ReactApp1.Server.Services
         public async Task<List<Mjeku>> SearchDoctorsAsync(string query)
         {
             var searchResponse = await _client.SearchAsync<Mjeku>(s => s
-                .Index("doctors-index")
+                .Indices("doctors-index")
                 .Query(q => q
                     .MultiMatch(m => m
                         .Query(query)
-                        .Fields(f => f.Field("emri").Field("mbiemri").Field("specializimi"))
+                        .Fields(new[] { "emri", "mbiemri", "specializimi" })
                         .Fuzziness(new Fuzziness("AUTO"))
                     )
                 )

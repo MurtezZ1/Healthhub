@@ -191,3 +191,12 @@ C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\S
 C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Serilog.Sinks.Elasticsearch.dll
 C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Serilog.Sinks.PeriodicBatching.dll
 C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\VaultSharp.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Elastic.Clients.Elasticsearch.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Elastic.Esql.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Elastic.Transport.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\OpenTelemetry.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\OpenTelemetry.Api.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\OpenTelemetry.Api.ProviderBuilderExtensions.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\OpenTelemetry.Exporter.OpenTelemetryProtocol.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\OpenTelemetry.Extensions.Hosting.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\OpenTelemetry.Instrumentation.AspNetCore.dll

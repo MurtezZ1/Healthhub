@@ -1,0 +1,50 @@
+asyncapi: 2.6.0
+info:
+  title: Healthhub Event-Driven API
+  version: 1.0.0
+  description: >
+    Dokumentimi i struktures se mesazheve (Events) qe publikohen ne sistemin Kafka per projektin Healthhub.
+servers:
+  kafka-broker:
+    url: localhost:29092
+    protocol: kafka
+    description: "Lokal Kafka Broker per zhvillim"
+
+channels:
+  notifications:
+    description: Kjo teme ruan paralajmerimet kritike shendetesore te pacienteve
+    publish:
+      summary: Publiko nje paralajmerim te ri (psh nga Spark Streaming ose pajisjet IoT)
+      message:
+        $ref: '#/components/messages/CriticalNotification'
+    subscribe:
+      summary: Degjo paralajmerimet e reja (psh nga Notification Service per te cuar Push Notification)
+      message:
+        $ref: '#/components/messages/CriticalNotification'
+
+components:
+  messages:
+    CriticalNotification:
+      name: critical-notification
+      title: Critical Notification Message
+      contentType: application/json
+      payload:
+        type: object
+        required:
+          - PatientId
+          - DeviceName
+          - ReadingValue
+          - IsCritical
+        properties:
+          PatientId:
+            type: string
+            description: "ID unike e pacientit (psh: P-9991)"
+          DeviceName:
+            type: string
+            description: "Emri i pajisjes IoT (psh: Heart Monitor)"
+          ReadingValue:
+            type: string
+            description: "Vlera e rregjistruar (psh: 210 BPM)"
+          IsCritical:
+            type: boolean
+            description: "A eshte kjo nje gjendje emergjente?"
