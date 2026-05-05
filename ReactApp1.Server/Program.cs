@@ -14,6 +14,9 @@ using VaultSharp;
 using VaultSharp.V1.AuthMethods.Token;
 using VaultSharp.V1.AuthMethods;
 using ReactApp1.Server.Middlewares;
+using Elastic.Clients.Elasticsearch;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Resources;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +38,19 @@ IAuthMethodInfo authMethod = new TokenAuthMethodInfo("root");
 var vaultClientSettings = new VaultClientSettings("http://localhost:8200", authMethod);
 IVaultClient vaultClient = new VaultClient(vaultClientSettings);
 builder.Services.AddSingleton<IVaultClient>(vaultClient);
+
+// Distributed Tracing (OpenTelemetry & Jaeger)
+builder.Services.AddOpenTelemetry()
+    .WithTracing(tracerProviderBuilder =>
+    {
+        tracerProviderBuilder
+            .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("Healthhub.Server"))
+            .AddAspNetCoreInstrumentation()
+            .AddOtlpExporter(options =>
+            {
+                options.Endpoint = new Uri("http://localhost:4317"); // Jaeger OTLP Receiver
+            });
+    });
 
 // Add services to the container
 builder.Services.AddOpenApi();
@@ -113,6 +129,13 @@ builder.Services.AddHttpClient("ExternalService")
 // Add Scoped Services
 builder.Services.AddScoped<IUserService, ReactApp1.Server.Services.UserService>();
 builder.Services.AddSingleton<ReactApp1.Server.Services.MedicalLogService>();
+
+// Full-text Search (Elasticsearch Client)
+var settings = new ElasticsearchClientSettings(new Uri("http://localhost:9200"))
+    .DefaultIndex("healthhub-default");
+var elasticClient = new ElasticsearchClient(settings);
+builder.Services.AddSingleton(elasticClient);
+builder.Services.AddScoped<ReactApp1.Server.Services.SearchService>();
 
 // Configure JWT Options
 builder.Services.Configure<ReactApp1.Server.Data.Models.JWT>(builder.Configuration.GetSection("JWT"));

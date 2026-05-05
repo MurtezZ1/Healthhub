@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReactApp1.Server.Data;
@@ -7,6 +7,9 @@ using ReactApp1.Server.DTOs;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Distributed;
+using System.Text.Json;
+using ReactApp1.Server.Services;
 
 namespace ReactApp1.Server.Controllers
 {
@@ -15,10 +18,22 @@ namespace ReactApp1.Server.Controllers
     public class MjekuController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IDistributedCache _cache;
+        private readonly SearchService _searchService;
 
-        public MjekuController(ApplicationDbContext context)
+        public MjekuController(ApplicationDbContext context, IDistributedCache cache, SearchService searchService)
         {
             _context = context;
+            _cache = cache;
+            _searchService = searchService;
+        }
+
+        [HttpGet("search")]
+        public async Task<ActionResult<List<Mjeku>>> SearchDoctors([FromQuery] string query)
+        {
+            // Full-text search using Elasticsearch
+            var results = await _searchService.SearchDoctorsAsync(query);
+            return Ok(results);
         }
 
         [HttpGet]
@@ -150,7 +165,6 @@ namespace ReactApp1.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<MjekuDTO>> PostMjeku(MjekuDTO mjekuDto)
         {
-
             var mjeku = new Mjeku
             {
                 Id = mjekuDto.Id,
@@ -158,9 +172,18 @@ namespace ReactApp1.Server.Controllers
                 NumriLicences = mjekuDto.NumriLicences,
             };
 
+            // 1. Save to MySQL Database
             _context.Mjeket.Add(mjeku);
             await _context.SaveChangesAsync();
 
+            // 2. Index in Elasticsearch for Full-Text Search
+            await _searchService.IndexDoctorAsync(mjeku);
+
+            // 3. Write-Through Caching: Save simultaneously to Redis Cache
+            var cacheOptions = new DistributedCacheEntryOptions()
+                .SetAbsoluteExpiration(TimeSpan.FromHours(1));
+            var cacheKey = $"mjeku_{mjeku.Id}";
+            await _cache.SetStringAsync(cacheKey, JsonSerializer.Serialize(mjeku), cacheOptions);
 
             return CreatedAtAction(nameof(GetMjeku), new { id = mjeku.Id }, mjekuDto);
         }

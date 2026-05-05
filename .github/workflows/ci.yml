@@ -1,0 +1,49 @@
+name: Healthhub CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test-backend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: dotnet restore ReactApp1.Server/ReactApp1.Server.csproj
+    - name: Build
+      run: dotnet build ReactApp1.Server/ReactApp1.Server.csproj --no-restore
+    - name: Test
+      run: dotnet test ReactApp1.Server/ReactApp1.Server.csproj --no-build --verbosity normal
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+    - name: npm install and build
+      run: |
+        cd reactapp1.client
+        npm install
+        npm run build
+        
+  docker-publish:
+    needs: [build-and-test-backend, build-frontend]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build and Push Docker Images
+      run: |
+        echo "Simulating docker build and push to registry..."
+        # docker build -t healthhub-backend:latest ./ReactApp1.Server
+        # docker push myregistry.azurecr.io/healthhub-backend:latest
