@@ -6,21 +6,35 @@ using StackExchange.Redis;
 using Confluent.Kafka;
 using Prometheus;
 using Serilog;
+using Serilog.Sinks.Elasticsearch;
 using Polly;
 using Polly.Extensions.Http;
 using MongoDB.Driver;
+using VaultSharp;
+using VaultSharp.V1.AuthMethods.Token;
+using VaultSharp.V1.AuthMethods;
+using ReactApp1.Server.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Serilog Setup
+// 1. Serilog Setup with Elasticsearch (SIEM/SOAR Integration)
 builder.Host.UseSerilog((context, config) =>
 {
-    config.WriteTo.Console();
-    if (context.HostingEnvironment.IsDevelopment())
-    {
-        config.WriteTo.Debug();
-    }
+    config.ReadFrom.Configuration(context.Configuration)
+          .Enrich.FromLogContext()
+          .WriteTo.Console()
+          .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
+          {
+              AutoRegisterTemplate = true,
+              IndexFormat = "healthhub-security-logs-{0:yyyy.MM.dd}"
+          });
 });
+
+// Vault Configuration (Secrets Management)
+IAuthMethodInfo authMethod = new TokenAuthMethodInfo("root");
+var vaultClientSettings = new VaultClientSettings("http://localhost:8200", authMethod);
+IVaultClient vaultClient = new VaultClient(vaultClientSettings);
+builder.Services.AddSingleton<IVaultClient>(vaultClient);
 
 // Add services to the container
 builder.Services.AddOpenApi();
@@ -133,6 +147,11 @@ app.UseHttpsRedirection();
 // Prometheus Metrics Endpoint
 app.UseMetricServer();
 app.UseHttpMetrics();
+
+app.UseRouting();
+
+// Use Immutable Audit Logs Middleware (Data Access Governance)
+app.UseSecurityAudit();
 
 app.UseAuthentication();
 app.UseAuthorization();

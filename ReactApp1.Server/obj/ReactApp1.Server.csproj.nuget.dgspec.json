@@ -104,6 +104,10 @@
               "target": "Package",
               "version": "[10.0.0, )"
             },
+            "Serilog.Sinks.Elasticsearch": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.10.1, )"
@@ -115,6 +119,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[8.15.0, )"
+            },
+            "VaultSharp": {
+              "target": "Package",
+              "version": "[1.17.5.1, )"
             },
             "prometheus-net.AspNetCore": {
               "target": "Package",
