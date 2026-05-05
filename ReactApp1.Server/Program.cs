@@ -6,6 +6,9 @@ using StackExchange.Redis;
 using Confluent.Kafka;
 using Prometheus;
 using Serilog;
+using Polly;
+using Polly.Extensions.Http;
+using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +29,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+        Microsoft.EntityFrameworkCore.ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     ));
 
 // 3. Caching (Redis Validation with Fallback)
@@ -80,8 +83,32 @@ builder.Services.AddControllers();
 // 7. Health Checks
 builder.Services.AddHealthChecks();
 
+// Resilient HTTP Client using Polly
+builder.Services.AddHttpClient("ExternalService")
+    .AddPolicyHandler(HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+            onRetry: (outcome, timespan, retryAttempt, context) =>
+            {
+                Log.Warning("Delaying for {delay}ms, then making retry {retry}.", timespan.TotalMilliseconds, retryAttempt);
+            }))
+    .AddPolicyHandler(HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
+
+// Add Scoped Services
+builder.Services.AddScoped<IUserService, ReactApp1.Server.Services.UserService>();
+builder.Services.AddSingleton<ReactApp1.Server.Services.MedicalLogService>();
+
+// Configure JWT Options
+builder.Services.Configure<ReactApp1.Server.Data.Models.JWT>(builder.Configuration.GetSection("JWT"));
+
 // 8. Prometheus Metrics (Safe)
 builder.Services.UseHttpClientMetrics();
+
+// 9. MongoDB (Hybrid Storage)
+var mongoClient = new MongoClient(builder.Configuration.GetConnectionString("MongoDb") ?? "mongodb://localhost:27017");
+builder.Services.AddSingleton<IMongoClient>(mongoClient);
 
 builder.Services.AddCors(options =>
 {
@@ -130,6 +157,24 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        context.Database.Migrate();
+
+        var userManager = services.GetRequiredService<UserManager<User>>();
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        await ReactApp1.Server.Data.Models.ApplicationDbContextSeed.SeedEssentialsAsync(userManager, roleManager);
+    }
+    catch (Exception ex)
+    {
+        Log.Error(ex, "An error occurred seeding the DB.");
+    }
+}
 
 app.Run();
 

@@ -177,3 +177,12 @@ C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\r
 C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\runtimes\win-x86\native\vcruntime140.dll
 C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\runtimes\win-x86\native\zlib1.dll
 C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\runtimes\win-x86\native\zstd.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Microsoft.Extensions.Http.Polly.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Polly.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Polly.Extensions.Http.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\DnsClient.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\MongoDB.Bson.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\MongoDB.Driver.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\SharpCompress.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\Snappier.dll
+C:\Users\ERJON\Desktop\healthcare\Healthhub\ReactApp1.Server\bin\Debug\net10.0\ZstdSharp.dll

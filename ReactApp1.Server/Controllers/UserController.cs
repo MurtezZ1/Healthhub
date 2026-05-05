@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ReactApp1.Server;
 using ReactApp1.Server.Data.Models;
@@ -43,7 +43,10 @@ public class UserController : ControllerBase
     public async Task<IActionResult> GetTokenAsync(TokenRequestModel model)
     {
         var result = await _userService.GetTokenAsync(model);
-        SetRefreshTokenInCookie(result.RefreshToken);
+        if (!string.IsNullOrEmpty(result.RefreshToken))
+        {
+            SetRefreshTokenInCookie(result.RefreshToken);
+        }
         return Ok(result);
     }
 

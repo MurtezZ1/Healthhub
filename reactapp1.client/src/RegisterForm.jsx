@@ -90,20 +90,16 @@ function Register() {
 
             if (typeof data === "string" && data.includes("User Registered")) {
                 console.log('Registration successful');
-                if (data.token && data.token.split('.').length === 3) {
-                    localStorage.setItem("token", data.token);
-                } else {
-                    console.error('Invalid token received');
-                }
-                document.location = "/login"; // Redirect to login page
+                toast.success('Registration successful!');
+                navigate("/LoginForm"); // Redirect to login page
             } else {
                 console.error('Registration failed:', data.message || data);
-                setErrorMessage(data.message || 'Registration failed. Please try again.');
+                toast.error(data.message || data || 'Registration failed. Please try again.');
             }
 
         } catch (error) {
             console.error('Registration failed:', error);
-            setErrorMessage('Registration failed. Please try again.');
+            toast.error('Registration failed. Please try again.');
         }
     };
 

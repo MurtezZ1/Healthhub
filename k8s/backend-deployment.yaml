@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthhub-server-deployment
+  namespace: healthhub-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: healthhub-server
+  template:
+    metadata:
+      labels:
+        app: healthhub-server
+    spec:
+      containers:
+      - name: healthhub-server
+        image: healthhub-server:latest
+        imagePullPolicy: Never # Use local docker image
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ConnectionStrings__DefaultConnection
+          value: "Server=mysql;Database=healthhub;User=root;Password=root;"
+        - name: JWT__Key
+          value: "StartByKeyTestingKey1234567890123456"
+        - name: JWT__Issuer
+          value: "http://localhost:5000"
+        - name: JWT__Audience
+          value: "http://localhost:5173"
+        - name: Redis__ConnectionString
+          value: "redis:6379"
+        - name: Kafka__BootstrapServers
+          value: "kafka:9092"
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: healthhub-server
+  namespace: healthhub-namespace
+spec:
+  selector:
+    app: healthhub-server
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: healthhub-server-hpa
+  namespace: healthhub-namespace
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: healthhub-server-deployment
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
